@@ -1,0 +1,37 @@
+<div class="ui center aligned grid">
+  <div class="row" style="margin-top: 50px;">
+    <h1 class="ui header">Movie Search</h1>
+  </div>
+  <div class="row">
+    <div class="ten wide column">
+      <form>
+        <div class="ui fluid input">
+          <input name="query" placeholder="Search..." type="text" [(ngModel)]="query" [ngClass]="{disabled: searching}">
+        </div>
+      </form>
+    </div>
+    <div class="two wide column">
+      <button class="ui primary button" (click)="search()">Rechercher</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="fourteen wide column">
+      <div class="ui cards">
+        <div class="card" *ngFor="let searchLink of searchLinks">
+          <div class="content">
+            <div class="header">{{searchLink.title}}</div>
+            <div class="description">
+              {{searchLink.description}}
+            </div>
+          </div>
+          <a href="{{searchLink.url}}">
+            <div class="ui bottom attached button">
+              <i class="external icon"></i>
+              Voir site
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

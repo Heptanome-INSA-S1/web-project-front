@@ -1,7 +1,7 @@
 export const API_SERVER = {
   url: 'http://localhost:8080/',
-  searchLink: this.url + 'searchLinks',
-  fillContent: this.url + 'fillContent',
-  analyse: this.url + 'analyze',
-  rdf: this.url + 'getRdf'
+  searchLink: 'http://localhost:8080/searchLinks',
+  fillContent: 'http://localhost:8080/fillContent',
+  analyse: 'http://localhost:8080/analyze',
+  rdf: 'http://localhost:8080/getRdf'
 };
