@@ -24,7 +24,6 @@ export class SearchPageComponent {
       });
     this.movieService.getMovies(this.query)
       .then(res => {
-        console.log(res);
         this.movies = res;
         this.searching[1] = false;
       });

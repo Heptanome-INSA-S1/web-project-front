@@ -18,7 +18,6 @@ export class MovieService {
     return this.http.get(API_SERVER.movies + query)
       .toPromise()
       .then(res => {
-        console.log(res.json());
         return res.json() as Array<Movie>;
       })
       .catch(this.handleError);
