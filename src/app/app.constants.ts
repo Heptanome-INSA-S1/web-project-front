@@ -3,5 +3,6 @@ export const API_SERVER = {
   searchLink: 'http://localhost:8080/searchLinks',
   fillContent: 'http://localhost:8080/fillContent',
   analyse: 'http://localhost:8080/analyze',
-  rdf: 'http://localhost:8080/getRdf'
+  rdf: 'http://localhost:8080/getRdf',
+  movies: this.url + 'movies'
 };

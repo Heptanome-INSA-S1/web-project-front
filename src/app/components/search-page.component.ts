@@ -11,17 +11,13 @@ export class SearchPageComponent {
   query: string;
   searchLinks: Array<SearchLink>;
   searching = false;
-
   constructor(private apiService: APIService) {}
   search() {
-
-    console.log(this.query);
     this.searching = true;
     this.apiService.getSearchLinks(this.query)
       .then(res => {
         this.searchLinks = res;
         this.searching = false;
-        console.log(this.searchLinks);
       })
   }
 }

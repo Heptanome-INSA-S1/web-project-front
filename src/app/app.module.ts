@@ -4,15 +4,18 @@ import {HttpModule} from '@angular/http';
 import {SuiModule} from 'ng2-semantic-ui';
 import {FormsModule} from '@angular/forms';
 
-import { AppComponent } from './app.component';
-
 import {APIService} from './services/api.service';
+import {MovieService} from './services/movie.service';
+
+import { AppComponent } from './app.component';
 import {SearchPageComponent} from './components/search-page.component';
+import {GoogleResultComponent} from './components/google-result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    GoogleResultComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,8 @@ import {SearchPageComponent} from './components/search-page.component';
     SuiModule
   ],
   providers: [
-    APIService
+    APIService,
+    MovieService
   ],
   bootstrap: [AppComponent]
 })

@@ -16,7 +16,7 @@
   </div>
   <div class="row">
     <div class="fourteen wide column">
-      <div class="ui cards">
+      <!--<div class="ui cards">
         <div class="card" *ngFor="let searchLink of searchLinks">
           <div class="content">
             <div class="header">{{searchLink.title}}</div>
@@ -31,7 +31,8 @@
             </div>
           </a>
         </div>
-      </div>
+      </div>-->
+      <app-google-result [searchLinks]="searchLinks" *ngIf="searchLinks"></app-google-result>
     </div>
   </div>
 </div>

@@ -16,14 +16,13 @@ export class APIService {
   }
 
   public getSearchLinks(query: string, offset?: number): Promise<Array<SearchLink>> {
-    query = '?query=' + query.replace(' ', '+');
+    query = '?query=' + query.trim().replace(/ /g, '+');
     if (offset) {
        query += '&offset=' + offset;
     }
     return this.http.get(API_SERVER.searchLink + query)
       .toPromise()
       .then(res => {
-        console.log(res.json());
         return res.json() as Array<SearchLink>;
       })
       .catch(this.handleError);
