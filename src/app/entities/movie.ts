@@ -1,11 +1,11 @@
 export class Movie {
   constructor(
-    public uri: string,
-    public frenchName: string,
-    public englishName: string,
-    public gross: number,
     public budget: number,
+    public englishName: string,
     public englishSynopsis: string,
-    public frenchSynopsis: string
+    public frenchName: string,
+    public frenchSynopsis: string,
+    public gross: number,
+    public uri: string
   ) {}
 }

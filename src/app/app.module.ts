@@ -10,12 +10,14 @@ import {MovieService} from './services/movie.service';
 import { AppComponent } from './app.component';
 import {SearchPageComponent} from './components/search-page.component';
 import {GoogleResultComponent} from './components/google-result.component';
+import {MoviesResultsComponent} from './components/movies-results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchPageComponent,
-    GoogleResultComponent
+    GoogleResultComponent,
+    MoviesResultsComponent
   ],
   imports: [
     BrowserModule,

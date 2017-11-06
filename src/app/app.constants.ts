@@ -4,5 +4,5 @@ export const API_SERVER = {
   fillContent: 'http://localhost:8080/fillContent',
   analyse: 'http://localhost:8080/analyze',
   rdf: 'http://localhost:8080/getRdf',
-  movies: this.url + 'movies'
+  movies: 'http://localhost:8080/movies'
 };

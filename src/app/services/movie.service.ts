@@ -9,7 +9,7 @@ export class MovieService {
   constructor( private http: Http) {}
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred in APIService: ', error); // for demo purposes only
+    console.error('An error occurred in MovieService: ', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 
@@ -18,6 +18,7 @@ export class MovieService {
     return this.http.get(API_SERVER.movies + query)
       .toPromise()
       .then(res => {
+        console.log(res.json());
         return res.json() as Array<Movie>;
       })
       .catch(this.handleError);
