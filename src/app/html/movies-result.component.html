@@ -1,36 +1,26 @@
-<div class="ui segments">
-  <div class="ui segment">
-    <h2 class="ui header">
-      <i class="film icon"></i>
+<div class="ui secondary segment">
+  <div class="ui cards">
+    <div class="card" *ngFor="let movie of movies">
       <div class="content">
-        Movies results
-      </div>
-    </h2>
-  </div>
-  <div class="ui secondary segment">
-    <div class="ui cards">
-      <div class="card" *ngFor="let movie of movies">
-        <div class="content">
-          <div class="header" *ngIf="movie.frenchName">{{movie.frenchName}}</div>
-          <div class="header" *ngIf="!movie.frenchName && movie.englishName">{{movie.englishName}}</div>
+        <div class="header" *ngIf="movie.frenchName">{{movie.frenchName}}</div>
+        <div class="header" *ngIf="!movie.frenchName && movie.englishName">{{movie.englishName}}</div>
 
-          <div class="description" *ngIf="movie.frenchSynopsis">
-            {{movie.frenchSynopsis}}
-          </div>
-          <div class="description" *ngIf="!movie.frenchSynopsis && movie.englishSynopsis">
-            {{movie.englishSynopsis}}
-          </div>
+        <div class="description" *ngIf="movie.frenchSynopsis">
+          {{movie.frenchSynopsis}}
         </div>
-        <div class="extra content" *ngIf="movie.gross || movie.budget">
-      <span class="left floated money" *ngIf="movie.budget">
-        <i class="money icon"></i>
-        {{movie.budget}} €
-      </span>
-          <span class="right floated ticket" *ngIf="movie.gross">
-        <i class="ticket icon"></i>
-        {{movie.gross}} €
-      </span>
+        <div class="description" *ngIf="!movie.frenchSynopsis && movie.englishSynopsis">
+          {{movie.englishSynopsis}}
         </div>
+      </div>
+      <div class="extra content" *ngIf="movie.gross || movie.budget">
+    <span class="left floated money" *ngIf="movie.budget">
+      <i class="money icon"></i>
+      {{movie.budget}} €
+    </span>
+        <span class="right floated ticket" *ngIf="movie.gross">
+      <i class="ticket icon"></i>
+      {{movie.gross}} €
+    </span>
       </div>
     </div>
   </div>

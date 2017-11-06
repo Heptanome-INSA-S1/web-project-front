@@ -4,24 +4,34 @@
   </div>
   <div class="row">
     <div class="ten wide column">
-      <form>
-        <div class="ui fluid input">
-          <input name="query" placeholder="Search..." type="text" [(ngModel)]="query" [ngClass]="{disabled: searching}">
+        <div class="ui fluid input" [ngClass]="{disabled: (searching[0] || searching[1])}">
+          <input name="query" placeholder="Search..." type="text" [(ngModel)]="query">
         </div>
-      </form>
     </div>
     <div class="two wide column">
-      <button class="ui primary button" (click)="search()">Rechercher</button>
+      <button class="ui primary button" [ngClass]="{loading: (searching[0] || searching[1])}" (click)="search()">Rechercher</button>
     </div>
   </div>
   <div class="row">
     <div class="fourteen wide column">
-      <app-movie-result [movies]="movies" *ngIf="movies"></app-movie-result>
-    </div>
-  </div>
-  <div class="row">
-    <div class="fourteen wide column">
-      <app-google-result [searchLinks]="searchLinks" *ngIf="searchLinks"></app-google-result>
+      <sui-accordion class="styled fluid" *ngIf="(movies && movies.length > 0)|| (searchLinks && searchLinks.length > 0)">
+        <sui-accordion-panel [isOpen]="true" *ngIf="movies && movies.length > 0">
+          <div title>
+            <h3 class="ui left aligned header"><i class="film icon"></i> Movies results</h3>
+          </div>
+          <div content>
+            <app-movie-result [movies]="movies"></app-movie-result>
+          </div>
+        </sui-accordion-panel>
+        <sui-accordion-panel [isOpen]="!movies" *ngIf="searchLinks && searchLinks.length > 0">
+          <div title>
+            <h3 class="ui left aligned header"><i class="google icon"></i> Google results</h3>
+          </div>
+          <div content>
+            <app-google-result [searchLinks]="searchLinks"></app-google-result>
+          </div>
+        </sui-accordion-panel>
+      </sui-accordion>
     </div>
   </div>
 </div>

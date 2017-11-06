@@ -1,19 +1,9 @@
-<div class="ui segments">
-  <div class="ui segment">
-    <h2 class="ui header">
-      <i class="google icon"></i>
-      <div class="content">
-        Google results
-      </div>
-    </h2>
-  </div>
-  <div class="ui secondary segment">
-    <div class="ui left aligned segment" *ngFor="let searchLink of searchLinks; index as i" [ngClass]="{red: i%4==0, yellow: i%4==1, green: i%4==2, blue: i%4==3}">
-      <h4 class="ui dividing header">
-        {{searchLink.title}}
-        <div class="sub header"><a [href]="searchLink.url">{{searchLink.url}} <i class="external icon"></i></a></div>
-      </h4>
-      <p>{{searchLink.description}}</p>
-    </div>
+<div class="ui secondary segment">
+  <div class="ui left aligned segment" *ngFor="let searchLink of searchLinks; index as i" [ngClass]="{red: i%4==0, yellow: i%4==1, green: i%4==2, blue: i%4==3}">
+    <h4 class="ui dividing header">
+      {{searchLink.title}}
+      <div class="sub header"><a [href]="searchLink.url">{{searchLink.url}} <i class="external icon"></i></a></div>
+    </h4>
+    <p>{{searchLink.description}}</p>
   </div>
 </div>

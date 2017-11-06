@@ -13,17 +13,20 @@ export class SearchPageComponent {
   query: string;
   searchLinks: Array<SearchLink>;
   movies: Array<Movie>;
-  searching = false;
+  searching = [false, false];
   constructor(private apiService: APIService, private movieService: MovieService) {}
   search() {
+    this.searching = [true, true];
     this.apiService.getSearchLinks(this.query)
       .then(res => {
         this.searchLinks = res;
+        this.searching[0] = false;
       });
     this.movieService.getMovies(this.query)
       .then(res => {
         console.log(res);
         this.movies = res;
+        this.searching[1] = false;
       });
   }
 }
