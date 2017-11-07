@@ -1,6 +1,7 @@
 import {Work} from './work';
 import {Season} from './season';
 import {URI} from './uri';
+import {Artist} from './artist';
 
 export class Show extends Work {
   constructor(

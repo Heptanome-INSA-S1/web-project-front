@@ -6,18 +6,21 @@ import {FormsModule} from '@angular/forms';
 
 import {APIService} from './services/api.service';
 import {MovieService} from './services/movie.service';
+import {AlertService} from './services/alert.service';
 
 import { AppComponent } from './app.component';
 import {SearchPageComponent} from './components/search-page.component';
 import {GoogleResultComponent} from './components/google-result.component';
 import {MoviesResultsComponent} from './components/movies-results.component';
+import {AlertComponent} from './components/alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchPageComponent,
     GoogleResultComponent,
-    MoviesResultsComponent
+    MoviesResultsComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import {MoviesResultsComponent} from './components/movies-results.component';
   ],
   providers: [
     APIService,
-    MovieService
+    MovieService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })

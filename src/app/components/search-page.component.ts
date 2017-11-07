@@ -3,6 +3,7 @@ import {APIService} from '../services/api.service';
 import {SearchLink} from '../entities/google-search-api/search-link';
 import {Movie} from '../entities/movie-api/movie';
 import {MovieService} from '../services/movie.service';
+import {AlertService} from '../services/alert.service';
 
 @Component({
   selector: 'app-search-page',
@@ -14,7 +15,7 @@ export class SearchPageComponent {
   searchLinks: Array<SearchLink>;
   movies: Array<Movie>;
   searching = [false, false];
-  constructor(private apiService: APIService, private movieService: MovieService) {}
+  constructor(private apiService: APIService, private movieService: MovieService, private alertService: AlertService) {}
   search() {
     this.searching = [true, true];
     this.apiService.getSearchLinks(this.query)
@@ -24,6 +25,7 @@ export class SearchPageComponent {
       })
       .catch(res => {
         this.searching[0] = false;
+        this.alertService.warn('Error encountered :', 'Error encountered with the Google search API', 'warning');
       });
     this.movieService.getMovies(this.query)
       .then(res => {
@@ -32,6 +34,7 @@ export class SearchPageComponent {
       })
       .catch(res => {
         this.searching[1] = false;
+        this.alertService.warn('Error encountered :', 'Error encountered with the movie API', 'warning');
       });
   }
 }

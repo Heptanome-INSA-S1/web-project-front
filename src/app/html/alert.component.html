@@ -1,0 +1,9 @@
+<sui-message *ngFor="let alert of alerts" class="{{alert.type}} icon" [ngClass]="{icon: alert.icon}">
+  <i class="icon" [ngClass]="alert.icon" *ngIf="alert.icon"></i>
+  <div class="content">
+    <div class="header">
+      {{alert.title}}
+    </div>
+    <p>{{alert.message}}</p>
+  </div>
+</sui-message>
