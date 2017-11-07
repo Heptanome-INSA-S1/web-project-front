@@ -1,6 +1,8 @@
+import {URI} from './uri';
+
 export class Work {
   constructor(
-    public  uri: Array<URI>,
+    public uri: Array<URI>,
     public poster: string,
     public title: string,
     public releaseDate: string,
