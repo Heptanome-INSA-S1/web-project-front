@@ -1,7 +1,8 @@
 import {Work} from './work';
 import {URI} from './uri';
+import {Artist} from './artist';
 
-export class Season extends Work{
+export class Season extends Work {
   constructor(
     uri: Array<URI>,
     poster: string,
