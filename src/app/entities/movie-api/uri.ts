@@ -1,5 +1,5 @@
 export class URI {
-  accesor : string;
-  database : string;
-  link : string;
+  public accesor : string;
+  public database : string;
+  public link : string;
 }
