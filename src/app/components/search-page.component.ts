@@ -21,10 +21,16 @@ export class SearchPageComponent {
       .then(res => {
         this.searchLinks = res;
         this.searching[0] = false;
+      })
+      .catch(res => {
+        this.searching[0] = false;
       });
     this.movieService.getMovies(this.query)
       .then(res => {
         this.movies = res;
+        this.searching[1] = false;
+      })
+      .catch(res => {
         this.searching[1] = false;
       });
   }
