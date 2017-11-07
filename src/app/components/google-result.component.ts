@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {SearchLink} from '../entities/search-link';
+import {SearchLink} from '../entities/google-search-api/search-link';
 
 @Component({
   selector: 'app-google-result',

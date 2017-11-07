@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {APIService} from '../services/api.service';
-import {SearchLink} from '../entities/search-link';
-import {Movie} from '../entities/movie';
+import {SearchLink} from '../entities/google-search-api/search-link';
+import {Movie} from '../entities/movie-api/movie';
 import {MovieService} from '../services/movie.service';
 
 @Component({

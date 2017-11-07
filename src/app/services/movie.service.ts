@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {API_SERVER} from '../app.constants';
-import {Movie} from '../entities/movie';
+import {Movie} from '../entities/movie-api/movie';
 
 @Injectable()
 export class MovieService {

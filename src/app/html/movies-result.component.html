@@ -13,14 +13,14 @@
         </div>
       </div>
       <div class="extra content" *ngIf="movie.gross || movie.budget">
-    <span class="left floated money" *ngIf="movie.budget">
-      <i class="money icon"></i>
-      {{movie.budget}} €
-    </span>
-        <span class="right floated ticket" *ngIf="movie.gross">
-      <i class="ticket icon"></i>
-      {{movie.gross}} €
-    </span>
+        <span class="left floated money" *ngIf="movie.budget">
+          <i class="money icon"></i>
+          {{movie.budget}} €
+        </span>
+            <span class="right floated ticket" *ngIf="movie.gross">
+          <i class="ticket icon"></i>
+          {{movie.gross}} €
+        </span>
       </div>
     </div>
   </div>

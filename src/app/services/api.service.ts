@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import {SearchLink} from '../entities/search-link';
+import {SearchLink} from '../entities/google-search-api/search-link';
 import {API_SERVER} from '../app.constants';
-import {DBpediaQuery} from '../entities/dbpedia-query';
-import {AnalyseResponse} from '../entities/analyse-response';
+import {DBpediaQuery} from '../entities/google-search-api/dbpedia-query';
+import {AnalyseResponse} from '../entities/google-search-api/analyse-response';
 
 @Injectable()
 export class APIService {
