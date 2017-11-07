@@ -1,4 +1,5 @@
 import {URI} from './uri';
+import {Artist} from './artist';
 
 export class Work {
   constructor(

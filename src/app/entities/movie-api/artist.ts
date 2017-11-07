@@ -12,7 +12,7 @@ export class Artist extends Person{
     spouse: Array<Person>,
     public filmography: Array<Movie>,
     public bestMovies : Array<Movie>
-  ){
-    super(name,firstname,birthDate, deathDate,biography,children,spouse);
+  ) {
+    super(name, firstname, birthDate, deathDate, biography, children, spouse);
   }
 }
