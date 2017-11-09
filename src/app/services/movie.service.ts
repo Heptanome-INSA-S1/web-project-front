@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {API_SERVER} from '../app.constants';
-import {Movie} from '../entities/movie-api/movie';
+import {Work} from '../entities/movie-api/work';
 
 @Injectable()
 export class MovieService {
@@ -13,21 +13,21 @@ export class MovieService {
     return Promise.reject(error.message || error);
   }
 
-  public getMovies(query: string, short: boolean): Promise<Array<Movie>> {
+  public getMovies(query: string, short: boolean): Promise<Array<Work>> {
     query = '?name=' + query.trim().replace(/ /g, '+') + '&short=' + short;
     return this.http.get(API_SERVER.movies + query)
       .toPromise()
       .then(res => {
-        return res.json() as Array<Movie>;
+        return res.json() as Array<Work>;
       })
       .catch(this.handleError);
   }
 
-  public getMovieByResource(resource: string): Promise<Movie> {
+  public getMovieByResource(resource: string): Promise<Work> {
     return this.http.get(API_SERVER.movies + '/' + resource)
       .toPromise()
       .then(res => {
-        return res.json() as Movie;
+        return res.json() as Work;
       })
       .catch(this.handleError);
   }
