@@ -4,6 +4,7 @@ import {Work} from './work';
 export class Artist extends Person {
   constructor(
     name?: string,
+    firstName?: string,
     birthDate?: string,
     deathDate?: string,
     biography?: string,
@@ -12,6 +13,6 @@ export class Artist extends Person {
     public filmography?: Array<Work>,
     public bestMovies?: Array<Work>
   ) {
-    super(name, firstname, birthDate, deathDate, biography, children, partner);
+    super(name, firstName, birthDate, deathDate, biography, children, partner);
   }
 }
