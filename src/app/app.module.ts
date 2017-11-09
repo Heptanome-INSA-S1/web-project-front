@@ -13,6 +13,7 @@ import {SearchPageComponent} from './components/search-page.component';
 import {GoogleResultComponent} from './components/google-result.component';
 import {MoviesResultsComponent} from './components/movies-results.component';
 import {AlertComponent} from './components/alert.component';
+import {ActorsResultsComponent} from './components/actors-result.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {AlertComponent} from './components/alert.component';
     SearchPageComponent,
     GoogleResultComponent,
     MoviesResultsComponent,
-    AlertComponent
+    AlertComponent,
+    ActorsResultsComponent
   ],
   imports: [
     BrowserModule,

@@ -41,7 +41,15 @@
             <app-movie-result [movies]="movies"></app-movie-result>
           </div>
         </sui-accordion-panel>
-        <sui-accordion-panel [isOpen]="!movies || movies.length == 0" *ngIf="searchLinks && searchLinks.length > 0">
+        <sui-accordion-panel [isOpen]="(!movies || movies.length == 0)" *ngIf="actors && actors.length > 0">
+          <div title>
+            <h3 class="ui left aligned header"><i class="user icon"></i> Actors results</h3>
+          </div>
+          <div content>
+            <app-actor-result [actors]="actors"></app-actor-result>
+          </div>
+        </sui-accordion-panel>
+        <sui-accordion-panel [isOpen]="(!movies || movies.length == 0) && (!actors || actors.length == 0)" *ngIf="searchLinks && searchLinks.length > 0">
           <div title>
             <h3 class="ui left aligned header"><i class="google icon"></i> Google results</h3>
           </div>

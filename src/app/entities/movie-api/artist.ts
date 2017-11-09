@@ -1,7 +1,7 @@
-import {Movie} from './movie';
 import {Person} from './person';
+import {Work} from './work';
 
-export class Artist extends Person{
+export class Artist extends Person {
   constructor(
     name?: string,
     firstname?: string,
@@ -9,10 +9,10 @@ export class Artist extends Person{
     deathDate?: string,
     biography?: string,
     children?: Array<Person>,
-    spouse?: Array<Person>,
-    public filmography?: Array<Movie>,
-    public bestMovies?: Array<Movie>
+    partner?: Array<Person>,
+    public filmography?: Array<Work>,
+    public bestMovies?: Array<Work>
   ) {
-    super(name, firstname, birthDate, deathDate, biography, children, spouse);
+    super(name, firstname, birthDate, deathDate, biography, children, partner);
   }
 }

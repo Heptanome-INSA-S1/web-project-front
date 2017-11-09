@@ -6,6 +6,6 @@ export class Person {
     public deathDate?: string,
     public biography?: string,
     public children?: Array<Person>,
-    public spouse?: Array<Person>
+    public partner?: Array<Person>
   ) {}
 }
