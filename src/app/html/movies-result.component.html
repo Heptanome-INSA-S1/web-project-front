@@ -11,7 +11,7 @@
         <div class="description" *ngIf="!movie.plot">
           No plot available for this movie.
         </div>
-        <div class="ui middle aligned selection list" *ngIf="movie.actors.length>0">
+        <div class="ui middle aligned animated list" *ngIf="movie.actors.length>0">
           <div class="item" *ngFor="let actor of firstThreeElement(movie.actors)">
             <i class="user icon"></i>
             <div class="content">
