@@ -38,7 +38,7 @@
             <h3 class="ui left aligned header"><i class="film icon"></i> Movies results</h3>
           </div>
           <div content>
-            <app-movie-result [movies]="movies"></app-movie-result>
+            <app-movie-result [movies]="movies"></app-movie-result> <!-- à commenter pour mes tests -->
           </div>
         </sui-accordion-panel>
         <sui-accordion-panel [isOpen]="(!movies || movies.length == 0)" *ngIf="actors && actors.length > 0">

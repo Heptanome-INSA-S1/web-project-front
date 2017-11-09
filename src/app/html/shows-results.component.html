@@ -1,0 +1,47 @@
+<div class="ui secondary segment">
+  <div class="ui cards">
+    <div class="card" *ngFor="let show of shows" href="#">
+      <div class="content">
+        <div class="header" *ngIf="show.title">{{show.title}}
+          <span *ngIf="show.releaseDate">
+            &nbsp;(&nbsp;{{show.releaseDate}}&nbsp;)
+          </span>
+        </div>
+        <div class="header" *ngIf="!show.title">Missing title.</div>
+
+        <div class="description" *ngIf="show.plot">
+          {{show.plot}}
+        </div>
+        <div class="description" *ngIf="!show.plot">
+          No plot available for this show.
+        </div>
+        <div class="ui middle aligned animated list" *ngIf="show.actors.length>0">
+          <div class="item" *ngFor="let actor of firstThreeElement(show.actors)">
+            <i class="user icon"></i>
+            <div class="content">
+              <div class="header">{{actor.name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="extra content" *ngIf="show.runtime || show.numberSeason">
+        <span class="left floated" *ngIf="show.numberSeason">
+          # {{show.numberSeason}} ep
+        </span>
+        <span class="left floated" *ngIf="!show.numberSeason">
+          # N/C
+        </span>
+        <span class="right floated" *ngIf="show.runtime">
+          <i class="hourglass end icon"></i>
+          {{show.runtime}} min
+        </span>
+        <span class="right floated" *ngIf="!show.runtime">
+          <i class="hourglass end icon"></i>
+          N/C
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+

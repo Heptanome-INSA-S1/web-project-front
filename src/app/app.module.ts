@@ -14,6 +14,9 @@ import {GoogleResultComponent} from './components/google-result.component';
 import {MoviesResultsComponent} from './components/movies-results.component';
 import {AlertComponent} from './components/alert.component';
 import {ActorsResultsComponent} from './components/actors-result.component';
+import { MovieDetailComponent } from './components/movie-detail.component';
+import {AppRoutingModule} from './app-routing.module';
+import {ShowsResultsComponent} from './components/shows-results.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,16 @@ import {ActorsResultsComponent} from './components/actors-result.component';
     MoviesResultsComponent,
     AlertComponent,
     ActorsResultsComponent
+    AlertComponent,
+    MovieDetailComponent,
+    ShowsResultsComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    SuiModule
+    SuiModule,
+    AppRoutingModule
   ],
   providers: [
     APIService,

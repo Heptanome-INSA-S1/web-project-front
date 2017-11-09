@@ -4,7 +4,6 @@ import {Work} from './work';
 export class Artist extends Person {
   constructor(
     name?: string,
-    firstname?: string,
     birthDate?: string,
     deathDate?: string,
     biography?: string,

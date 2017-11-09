@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {APIService} from '../services/api.service';
 import {SearchLink} from '../entities/google-search-api/search-link';
-import {Movie} from '../entities/movie-api/movie';
 import {MovieService} from '../services/movie.service';
 import {AlertService} from '../services/alert.service';
 import {FILTER_OPTIONS} from '../app.constants';
@@ -11,6 +10,7 @@ import {Artist} from '../entities/movie-api/artist';
 import {ActorService} from '../services/actor.service';
 import {Show} from '../entities/movie-api/show';
 import {TvShowService} from '../services/tv-show.service';
+import {Work} from '../entities/movie-api/work';
 
 @Component({
   selector: 'app-search-page',
@@ -22,7 +22,7 @@ export class SearchPageComponent {
   filters: Array<Filter>;
   options: Array<Filter> = FILTER_OPTIONS;
   searchLinks: Array<SearchLink>;
-  movies: Array<Movie>;
+  movies: Array<Work>;
   actors: Array<Artist>;
   shows: Array<Show>;
   searching = [false, false, false, false];

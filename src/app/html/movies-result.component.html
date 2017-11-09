@@ -1,25 +1,32 @@
 <div class="ui secondary segment">
   <div class="ui cards">
-    <div class="card" *ngFor="let movie of movies">
+    <div class="card" *ngFor="let movie of movies" href="#">
       <div class="content">
-        <div class="header" *ngIf="movie.frenchName">{{movie.frenchName}}</div>
-        <div class="header" *ngIf="!movie.frenchName && movie.englishName">{{movie.englishName}}</div>
+        <div class="header" *ngIf="movie.title">{{movie.title}}</div>
+        <div class="header" *ngIf="!movie.title">Missing title.</div>
 
-        <div class="description" *ngIf="movie.frenchSynopsis">
-          {{movie.frenchSynopsis}}
+        <div class="description" *ngIf="movie.plot">
+          {{movie.plot}}
         </div>
-        <div class="description" *ngIf="!movie.frenchSynopsis && movie.englishSynopsis">
-          {{movie.englishSynopsis}}
+        <div class="description" *ngIf="!movie.plot">
+          No plot available for this movie.
+        </div>
+        <div class="ui middle aligned animated list" *ngIf="movie.actors.length>0">
+          <div class="item" *ngFor="let actor of firstThreeElement(movie.actors)">
+            <i class="user icon"></i>
+            <div class="content">
+              <div class="header">{{actor.name}}</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="extra content" *ngIf="movie.gross || movie.budget">
-        <span class="left floated money" *ngIf="movie.budget">
-          <i class="money icon"></i>
-          {{movie.budget}} €
+      <div class="extra content" *ngIf="movie.runtime || movie.releaseDate">
+        <span class="left floated money" *ngIf="movie.runtime">
+          <i class="hourglass end icon"></i>
+          {{movie.runtime}} min
         </span>
-            <span class="right floated ticket" *ngIf="movie.gross">
-          <i class="ticket icon"></i>
-          {{movie.gross}} €
+        <span class="right floated ticket" *ngIf="movie.releaseDate">
+          {{movie.releaseDate}}
         </span>
       </div>
     </div>
