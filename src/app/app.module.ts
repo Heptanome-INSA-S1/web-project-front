@@ -13,6 +13,8 @@ import {SearchPageComponent} from './components/search-page.component';
 import {GoogleResultComponent} from './components/google-result.component';
 import {MoviesResultsComponent} from './components/movies-results.component';
 import {AlertComponent} from './components/alert.component';
+import { MovieDetailComponent } from './components/movie-detail.component';
+import {AppRoutingModule} from './app-routing.modulte';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,15 @@ import {AlertComponent} from './components/alert.component';
     SearchPageComponent,
     GoogleResultComponent,
     MoviesResultsComponent,
-    AlertComponent
+    AlertComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    SuiModule
+    SuiModule,
+    AppRoutingModule
   ],
   providers: [
     APIService,
