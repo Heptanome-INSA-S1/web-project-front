@@ -13,8 +13,8 @@ export class MovieService {
     return Promise.reject(error.message || error);
   }
 
-  public getMovies(query: string): Promise<Array<Movie>> {
-    query = '?q=' + query.trim().replace(/ /g, '+');
+  public getMovies(query: string, short: boolean): Promise<Array<Movie>> {
+    query = '?name=' + query.trim().replace(/ /g, '+') + '&short=' + short;
     return this.http.get(API_SERVER.movies + query)
       .toPromise()
       .then(res => {

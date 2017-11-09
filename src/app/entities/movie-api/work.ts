@@ -3,17 +3,17 @@ import {Artist} from './artist';
 
 export class Work {
   constructor(
-    public uri: Array<URI>,
-    public poster: string,
-    public title: string,
-    public releaseDate: string,
-    public plot: string,
-    public runtime: number,
-    public actors: Array<Artist>,
-    public genres: Array<string>,
-    public director: Array<Artist>,
-    public gross: number,
-    public budget: number
+    public uri?: Array<URI>,
+    public poster?: string,
+    public title?: string,
+    public releaseDate?: string,
+    public plot?: string,
+    public runtime?: number,
+    public actors?: Array<Artist>,
+    public genres?: Array<string>,
+    public director?: Array<Artist>,
+    public gross?: number,
+    public budget?: number
   ) {}
 }
 
