@@ -1,4 +1,4 @@
-import {SearchLink} from "./search-link";
+import {SearchLink} from './search-link';
 
 export class DBpediaQuery {
   constructor(
