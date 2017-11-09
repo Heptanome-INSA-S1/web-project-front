@@ -14,7 +14,8 @@ import {GoogleResultComponent} from './components/google-result.component';
 import {MoviesResultsComponent} from './components/movies-results.component';
 import {AlertComponent} from './components/alert.component';
 import { MovieDetailComponent } from './components/movie-detail.component';
-import {AppRoutingModule} from './app-routing.modulte';
+import {AppRoutingModule} from './app-routing.module';
+import {ShowsResultsComponent} from './components/shows-results.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {AppRoutingModule} from './app-routing.modulte';
     GoogleResultComponent,
     MoviesResultsComponent,
     AlertComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    ShowsResultsComponent
   ],
   imports: [
     BrowserModule,
