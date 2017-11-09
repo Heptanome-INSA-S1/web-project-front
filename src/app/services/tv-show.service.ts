@@ -11,13 +11,13 @@ export class TvShowService {
   constructor( private http: Http) {}
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred in MovieService: ', error); // for demo purposes only
+    console.error('An error occurred in TvShowService: ', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 
   public getTvShows(query: string, short: boolean): Promise<Array<Show>> {
     query = '?name=' + query.trim().replace(/ /g, '+') + '&short=' + short;
-    return this.http.get(API_SERVER.movies + query)
+    return this.http.get(API_SERVER.shows + query)
       .toPromise()
       .then(res => {
         return res.json() as Array<Show>;
@@ -26,7 +26,7 @@ export class TvShowService {
   }
 
   public getTvShowByResource(resource: string): Promise<Show> {
-    return this.http.get(API_SERVER.movies + '/' + resource)
+    return this.http.get(API_SERVER.shows + '/' + resource)
       .toPromise()
       .then(res => {
         return res.json() as Show;

@@ -6,7 +6,6 @@ import {MovieService} from '../services/movie.service';
 import {AlertService} from '../services/alert.service';
 import {FILTER_OPTIONS} from '../app.constants';
 import {Filter} from '../entities/filter';
-import {noUndefined} from '@angular/compiler/src/util';
 import {isUndefined} from 'util';
 import {Artist} from '../entities/movie-api/artist';
 import {ActorService} from '../services/actor.service';
@@ -35,43 +34,54 @@ export class SearchPageComponent {
     private showService: TvShowService
   ) {}
   search() {
-    this.searching = [true, true, true, true];
-    this.apiService.getSearchLinks(this.query)
-      .then(res => {
-        this.searchLinks = res;
-        this.searching[0] = false;
-      })
-      .catch(res => {
-        this.searching[0] = false;
-        this.alertService.warn('Error encountered :', 'Error encountered with the Google search API', 'warning');
-      });
-    this.movieService.getMovies(this.query, true)
-      .then(res => {
-        this.movies = res;
-        this.searching[1] = false;
-      })
-      .catch(res => {
-        this.searching[1] = false;
-        this.alertService.warn('Error encountered :', 'Error encountered with the movie API', 'warning');
-      });
-    this.actorService.getActors(this.query, true)
-      .then( res => {
-        this.actors = res;
-        this.searching[2] = false;
-      })
-      .catch( res => {
-        this.searching[2] = false;
-        this.alertService.warn('Error encountered :', 'Error encountered with the actor API', 'warning')
-      });
-    this.showService.getTvShows(this.query, true)
-      .then( res => {
-        this.shows = res;
-        this.searching[3] = false;
-      })
-      .catch( res => {
-        this.searching[3] = false;
-        this.alertService.warn('Error encountered :', 'Error encountered with the tv-show API', 'warning')
-      });
+    if (this.toSearch.google) {
+      this.searching[0] = true;
+      this.apiService.getSearchLinks(this.query)
+        .then(res => {
+          this.searchLinks = res;
+          this.searching[0] = false;
+        })
+        .catch(res => {
+          this.searching[0] = false;
+          this.alertService.warn('Error encountered :', 'Error encountered with the Google search API', 'warning');
+        });
+    }
+    if (this.toSearch.movies) {
+      this.searching[1] = true;
+      this.movieService.getMovies(this.query, true)
+        .then(res => {
+          this.movies = res;
+          this.searching[1] = false;
+        })
+        .catch(res => {
+          this.searching[1] = false;
+          this.alertService.warn('Error encountered :', 'Error encountered with the movie API', 'warning');
+        });
+    }
+    if (this.toSearch.actors) {
+      this.searching[2] = true;
+      this.actorService.getActors(this.query, true)
+        .then( res => {
+          this.actors = res;
+          this.searching[2] = false;
+        })
+        .catch( res => {
+          this.searching[2] = false;
+          this.alertService.warn('Error encountered :', 'Error encountered with the actor API', 'warning')
+        });
+    }
+    if (this.toSearch.shows) {
+      this.searching[3] = true;
+      this.showService.getTvShows(this.query, true)
+        .then( res => {
+          this.shows = res;
+          this.searching[3] = false;
+        })
+        .catch( res => {
+          this.searching[3] = false;
+          this.alertService.warn('Error encountered :', 'Error encountered with the tv-show API', 'warning')
+        });
+    }
   }
   get toSearch(): any {
     return {

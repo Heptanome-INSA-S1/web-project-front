@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="eight wide column">
-        <div class="ui fluid input" [ngClass]="{disabled: (searching[0] || searching[1])}">
+        <div class="ui fluid input" [ngClass]="{disabled: (searching[0] || searching[1] || searching[2] || searching[3])}">
           <input name="query" placeholder="Search..." type="text" [(ngModel)]="query">
         </div>
     </div>
@@ -27,7 +27,7 @@
       </sui-multi-select>
     </div>
     <div class="two wide column">
-      <button class="ui primary button" [ngClass]="{loading: (searching[0] || searching[1])}" (click)="search()">Rechercher</button>
+      <button class="ui primary button" [ngClass]="{loading: (searching[0] || searching[1] || searching[2] || searching[3])}" (click)="search()">Rechercher</button>
     </div>
   </div>
   <div class="row">
