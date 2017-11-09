@@ -8,7 +8,7 @@ import {AlertService} from '../services/alert.service';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: '../html/movie-detail.component.html',
-  providers: [MovieService, AlertService],
+  providers: [MovieService],
 })
 export class MovieDetailComponent implements OnInit {
 

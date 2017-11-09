@@ -32,7 +32,7 @@
   </div>
   <div class="row">
     <div class="fourteen wide column">
-      <sui-accordion class="styled fluid" *ngIf="(movies && movies.length > 0)|| (searchLinks && searchLinks.length > 0)">
+      <sui-accordion class="styled fluid" *ngIf="(movies && movies.length > 0)|| (searchLinks && searchLinks.length > 0) ||(actors && actors.length > 0)">
         <sui-accordion-panel [isOpen]="true" *ngIf="movies && movies.length > 0">
           <div title>
             <h3 class="ui left aligned header"><i class="film icon"></i> Movies results</h3>

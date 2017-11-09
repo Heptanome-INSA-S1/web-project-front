@@ -1,20 +1,20 @@
 <div class="ui secondary segment">
   <div class="ui cards">
     <div class="card" *ngFor="let actor of actors">
-      <div class="content">
-        <div class="header" *ngIf="actor.name">{{actor.firstname}} {{actor.name}}</div>
+      <div class="left aligned content">
+        <div class="header" *ngIf="actor.name">{{actor.firstName}} {{actor.name}}</div>
         <div class="header" *ngIf="!actor.name">Missing name</div>
-        <div class="meta" *ngIf="actor.birthDate">{{actor.birthDate}}<span *ngIf="actor.deathDate">- {{actor.deathDate}}</span> </div>
+        <div class="meta" *ngIf="actor.birthDate">{{actor.birthDate.split('-').reverse().join('/')}}<span *ngIf="actor.deathDate">- {{actor.deathDate.split('-').reverse().join('/')}}</span> </div>
 
         <div class="description">
           <h4 class="ui header"><i class="id card outlet icon"></i> Biography : </h4>
-          <span *ngIf="actor.biography">{{actor.biography}}</span>
+          <span *ngIf="actor.biography">{{actor.biography.substring(0, 200) + ' ...'}}</span>
 
           <h4 class="ui header" *ngIf="actor.children && actor.children.length > 0"><i class="child icon"></i> Child : </h4>
           <div class="ui horizontal list" *ngIf="actor.children && actor.children.length > 0">
             <div class="item" *ngFor="let children of actor.children">
               <div class="content">
-                {{children.firstname}} {{children.name}}
+                {{children.firstName}} {{children.name}}
               </div>
             </div>
           </div>
@@ -23,7 +23,7 @@
           <div class="ui horizontal list" *ngIf="actor.partner && actor.partner.length > 0">
             <div class="item" *ngFor="let partner of actor.partner">
               <div class="content">
-                {{partner.firstname}} {{partner.name}}
+                {{partner.firstName}} {{partner.name}}
               </div>
             </div>
           </div>

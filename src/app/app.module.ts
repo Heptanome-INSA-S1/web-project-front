@@ -25,7 +25,7 @@ import {ShowsResultsComponent} from './components/shows-results.component';
     GoogleResultComponent,
     MoviesResultsComponent,
     AlertComponent,
-    ActorsResultsComponent
+    ActorsResultsComponent,
     AlertComponent,
     MovieDetailComponent,
     ShowsResultsComponent

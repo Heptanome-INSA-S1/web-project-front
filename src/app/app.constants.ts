@@ -22,20 +22,21 @@ export const FILTER_OPTIONS: Array<Filter> = [
   {name: 'TV-Show', value: 'shows', icon: 'tv'}
 ];
 
-export const ACTOR_EXEMPLE: Artist = new Artist('thomas', '28/05/1995', '', 'genius', [], [], [], []);
+export const ACTOR_EXEMPLE: Artist = new Artist('thomas', 'thomas', '28/05/1995', '', 'genius', [], [], [], []);
 export const MOVIE_EXEMPLE: Work = new Work([], '', 'Iron man', '2017', 'lore iiii iiii iii ii iii iii iii iii iii ii', 120,
    [ACTOR_EXEMPLE, ACTOR_EXEMPLE, ACTOR_EXEMPLE, ACTOR_EXEMPLE], ['Sci-Fi', 'Drama'], [], 56, 45);
 export const SEASON_EXEMPLE: Season = new Season([], '', 'Death of the hero', '2014', 'jqnfqjkfn qkfhf jnfqk', 45,
   [ACTOR_EXEMPLE, ACTOR_EXEMPLE], ['Action', 'Sci-Fi'], [], 1555, 556, 1, []);
 
 export const SHOW_EXEMPLE: Show = new Show([], '', 'The flash', '2014', 'jhdhfushefuh jqhuqhfuq fhhfhfh hfh', null,
-  [ACTOR_EXEMPLE, ACTOR_EXEMPLE, ACTOR_EXEMPLE], ['Action', 'Sci-Fi'], [], 15223, 152223, 3, [SEASON_EXEMPLE, SEASON_EXEMPLE, SEASON_EXEMPLE]);
+  [ACTOR_EXEMPLE, ACTOR_EXEMPLE, ACTOR_EXEMPLE], ['Action', 'Sci-Fi'], [], 15223, 152223, 3,
+  [SEASON_EXEMPLE, SEASON_EXEMPLE, SEASON_EXEMPLE]);
 
 export const ACTORS: Array<Artist> =
   [
     {
       name: 'Tatum',
-      firstname: 'Channing',
+      firstName: 'Channing',
       birthDate: '1980-4-26',
       deathDate: null,
       biography: 'Channing Tatum est un acteur, danseur, mannequin, producteur et réalisateur américain, né le 26 avril 1980 à Cullman' +
@@ -51,7 +52,7 @@ export const ACTORS: Array<Artist> =
     },
     {
       name: 'Tatum',
-      firstname: 'Channing2',
+      firstName: 'Channing2',
       birthDate: '1980-4-26',
       deathDate: null,
       biography: 'Channing Tatum est un acteur, danseur, mannequin, producteur et réalisateur américain, né le 26 avril 1980 à Cullman' +
