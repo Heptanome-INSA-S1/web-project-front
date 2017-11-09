@@ -3,10 +3,28 @@
     <h1 class="ui header">Movie Search</h1>
   </div>
   <div class="row">
-    <div class="ten wide column">
+    <div class="eight wide column">
         <div class="ui fluid input" [ngClass]="{disabled: (searching[0] || searching[1])}">
           <input name="query" placeholder="Search..." type="text" [(ngModel)]="query">
         </div>
+    </div>
+    <div class="four wide column">
+      <ng-template let-option #optionTemplate>
+        <i class="{{option.icon}} icon"></i>{{ option.name }}
+      </ng-template>
+      <sui-multi-select class="selection"
+                        [(ngModel)]="filters"
+                        [options]="options"
+                        labelField="name"
+                        [optionTemplate]="optionTemplate"
+                        [isSearchable]="false"
+                        [isDisabled]="false"
+                        [hasLabels]="true"
+                        #multiSelect>
+        <sui-select-option *ngFor="let option of multiSelect.filteredOptions"
+                           [value]="option">
+        </sui-select-option>
+      </sui-multi-select>
     </div>
     <div class="two wide column">
       <button class="ui primary button" [ngClass]="{loading: (searching[0] || searching[1])}" (click)="search()">Rechercher</button>
