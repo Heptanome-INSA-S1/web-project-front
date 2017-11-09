@@ -6,26 +6,30 @@ import {MovieService} from '../services/movie.service';
 import {AlertService} from '../services/alert.service';
 import {Artist} from '../entities/movie-api/artist';
 import {ActorService} from '../services/actor.service';
+import {Show} from '../entities/movie-api/show';
+import {TvShowService} from '../services/tv-show.service';
 
 @Component({
   selector: 'app-search-page',
   templateUrl: '../html/search-page.component.html',
-  providers: [APIService, MovieService, ActorService]
+  providers: [APIService, MovieService, ActorService, TvShowService]
 })
 export class SearchPageComponent {
   query: string;
   searchLinks: Array<SearchLink>;
   movies: Array<Movie>;
   actors: Array<Artist>;
-  searching = [false, false, false];
+  shows: Array<Show>;
+  searching = [false, false, false, false];
   constructor(
     private apiService: APIService,
     private movieService: MovieService,
     private alertService: AlertService,
-    private actorService: ActorService
+    private actorService: ActorService,
+    private showService: TvShowService
   ) {}
   search() {
-    this.searching = [true, true, true];
+    this.searching = [true, true, true, true];
     this.apiService.getSearchLinks(this.query)
       .then(res => {
         this.searchLinks = res;
@@ -52,6 +56,15 @@ export class SearchPageComponent {
       .catch( res => {
         this.searching[2] = false;
         this.alertService.warn('Error encountered :', 'Error encountered with the actor API', 'warning')
+      });
+    this.showService.getTvShows(this.query, true)
+      .then( res => {
+        this.shows = res;
+        this.searching[3] = false;
+      })
+      .catch( res => {
+        this.searching[3] = false;
+        this.alertService.warn('Error encountered :', 'Error encountered with the tv-show API', 'warning')
       });
   }
 }
