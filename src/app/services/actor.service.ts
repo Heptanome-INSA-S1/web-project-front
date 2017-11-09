@@ -13,8 +13,8 @@ export class ActorService {
     return Promise.reject(error.message || error);
   }
 
-  public getActors(query: string): Promise<Array<Artist>> {
-    query = '?q=' + query.trim().replace(/ /g, '+');
+  public getActors(query: string, short: boolean): Promise<Array<Artist>> {
+    query = '?name=' + query.trim().replace(/ /g, '+') + '&short=' + short;
     return this.http.get(API_SERVER.actors + query)
       .toPromise()
       .then(res => {
