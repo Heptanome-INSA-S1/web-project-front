@@ -60,6 +60,15 @@ export class SearchPageComponent {
           for (const movie of res) {
             this.movies.push(movie);
           }
+          if (this.toSearch.actors) {
+            for (const movie of this.movies){
+              if (movie.actors) {
+                for (const actor of movie.actors) {
+                  this.actors.push(actor);
+                }
+              }
+            }
+          }
           this.searching[1] = false;
         })
         .catch(res => {
