@@ -16,7 +16,7 @@
           No plot available for this show.
         </div>
         <div class="ui middle aligned animated list" *ngIf="show.actors.length>0">
-          <div class="item" *ngFor="let actor of firstThreeElement(show.actors)">
+          <div class="item" *ngFor="let actor of getActors(show.actors)">
             <i class="user icon"></i>
             <div class="content">
               <div class="header">{{actor.name}}</div>

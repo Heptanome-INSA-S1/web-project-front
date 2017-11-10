@@ -8,29 +8,11 @@
 
         <div class="description">
           <h4 class="ui header"><i class="id card outlet icon"></i> Biography : </h4>
-          <span *ngIf="actor.biography">{{actor.biography.substring(0, 200) + ' ...'}}</span>
+          <span *ngIf="actor.biography">{{actor.biography.substring(0, 200) + '...'}}</span>
 
-          <h4 class="ui header" *ngIf="actor.children && actor.children.length > 0"><i class="child icon"></i> Child : </h4>
-          <div class="ui horizontal list" *ngIf="actor.children && actor.children.length > 0">
-            <div class="item" *ngFor="let children of actor.children">
-              <div class="content">
-                {{children.firstName}} {{children.name}}
-              </div>
-            </div>
-          </div>
-
-          <h4 class="ui header" *ngIf="actor.partner && actor.partner.length > 0"><i class="heart icon"></i> Partner : </h4>
-          <div class="ui horizontal list" *ngIf="actor.partner && actor.partner.length > 0">
-            <div class="item" *ngFor="let partner of actor.partner">
-              <div class="content">
-                {{partner.firstName}} {{partner.name}}
-              </div>
-            </div>
-          </div>
-
-          <h4 class="ui header" *ngIf="actor.bestMovies && actor.bestMovies.length > 0"><i class="film icon"></i> Few movies : </h4>
-          <div class="ui horizontal list" *ngIf="actor.bestMovies && actor.bestMovies.length > 0">
-            <div class="item" *ngFor="let movie of actor.bestMovies">
+          <h4 class="ui header" *ngIf="actor.filmography && actor.filmography.length > 0"><i class="film icon"></i> Few movies : </h4>
+          <div class="ui bulleted list" *ngIf="actor.filmography && actor.filmography.length > 0">
+            <div class="item" *ngFor="let movie of getMovies(actor.filmography)">
               <div class="content">
                 {{movie.title}}
               </div>
