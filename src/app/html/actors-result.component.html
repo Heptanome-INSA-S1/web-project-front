@@ -1,6 +1,9 @@
 <div class="ui secondary segment">
   <div class="ui cards">
-    <div class="card" *ngFor="let actor of actors">
+    <a class="card" *ngFor="let actor of actors" href="/actor?uuid={{link(actor)}}">
+      <div class="image" *ngIf="actor.photo">
+        <img src="{{actor.photo}}">
+      </div>
       <div class="left aligned content">
         <div class="header" *ngIf="actor.name">{{actor.firstName}} {{actor.name}}</div>
         <div class="header" *ngIf="!actor.name">Missing name</div>
@@ -20,6 +23,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </a>
   </div>
 </div>

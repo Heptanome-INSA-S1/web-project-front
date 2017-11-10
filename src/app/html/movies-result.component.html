@@ -1,6 +1,9 @@
 <div class="ui secondary segment">
   <div class="ui cards">
     <a class="card" *ngFor="let movie of movies" href="/movie?uuid={{link(movie)}}" >
+      <div class="image" *ngIf="movie.poster">
+        <img src="{{movie.poster}}">
+      </div>
       <div class="left aligned content">
         <div class="header" *ngIf="movie.title">{{movie.title}}</div>
         <div class="header" *ngIf="!movie.title">Missing title.</div>

@@ -1,46 +1,38 @@
-<h1>{{actor.name}}&nbsp;{{actor.firstName}}</h1>
-<form class="ui form">
-  <div class="field">
-    <label>Information</label>
-    <textarea readonly>Born in : {{actor.birthDate}} ({{actor.birthPlace}})&nbsp;Died in : {{actor.deathDate}}</textarea>
-  </div>
-  <div class="field">
-    <label>Biography</label>
-    <textarea readonly>{{actor.biography}}</textarea>
-  </div>
-  <div class="field">
-    <label>Last Name</label>
-  </div>
-  <div class="field">
-    <label>Partner(s)</label>
-    <div class="ui bulleted list">
-      <div class="item" *ngFor="let p of partner">
+<div class="ui left aligned segment" *ngIf="actor">
+  <div class="ui grid">
+    <div class="row">
+      <h1 class="ui header">
+        <img src="{{actor.photo}}" class="ui circular image" *ngIf="actor.photo">
         <div class="content">
-          <i class="user icon"></i>
-          <a class="header" routerLink="actor/:{{link(p)}}">{{p.firstName}}&nbsp;{{p.name}}</a>
+          {{actor.firstName}} {{actor.name}}
+          <div class="sub header" *ngIf="actor.birthDate">{{actor.birthDate.split('-').reverse().join('/')}}<span *ngIf="actor.deathDate"> - {{actor.deathDate.split('-').reverse().join('/')}}</span></div>
         </div>
-      </div>
+      </h1>
     </div>
-  </div>
-  <div class="field">
-    <label>Children</label>
-    <div class="ui list">
-      <div class="item" *ngFor="let child of children">
-        <i class="user icon"></i>
-        <div class="content">
-          <a class="header" routerLink="actor/:{{link(child)}}">{{child.firstName}}&nbsp;{{child.name}}</a>
-        </div>
-      </div>
-    </div>
-    <div class="field">
-      <label>Filmography</label>
-      <div class="ui bulleted list">
-        <div class="item" *ngFor="let movie of filmography">
-          <div class="content">
-            <a class="header" >{{movie.title}}</a>
+    <div class="row">
+      <sui-accordion class="styled fluid">
+        <sui-accordion-panel [isOpen]="true">
+          <div title>
+            <h2 class="ui left aligned header"><i class="id card icon"></i> Biography</h2>
           </div>
-        </div>
-      </div>
+          <div content>
+            <p class="left aligned">{{actor.biography}}</p>
+          </div>
+        </sui-accordion-panel>
+      </sui-accordion>
+      <sui-accordion class="styled fluid">
+        <sui-accordion-panel [isOpen]="false">
+          <div title>
+            <h2 class="ui left aligned header"><i class="id card icon"></i> Life</h2>
+          </div>
+          <div content>
+            <div class="column">
+
+            </div>
+          </div>
+        </sui-accordion-panel>
+      </sui-accordion>
     </div>
   </div>
-</form>
+</div>
+
