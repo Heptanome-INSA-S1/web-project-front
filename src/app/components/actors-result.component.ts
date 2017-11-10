@@ -12,6 +12,7 @@ import {Person} from '../entities/movie-api/person';
 })
 export class ActorsResultsComponent {
   @Input() actors: Array<Artist>;
+
   getMovies(movies: Array<Work>): Array<Work> {
     return firstNElement(movies, 3);
   }
