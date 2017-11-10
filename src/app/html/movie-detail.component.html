@@ -1,3 +1,4 @@
+<app-alert></app-alert>
 <div class="ui segment" *ngIf="!charged" style="height:100%">
   <div class="ui active dimmer">
     <div class="ui text loader">Loading</div>
@@ -11,9 +12,11 @@
     <div class="eight wide column">
       <div class="ui segment">
         <h1 class="ui header">{{movie.title}}</h1>
-        Genres :
-        <div *ngFor="let genre of movie.genres">
-          {{genre}}
+        <div *ngIf="movie.genre">
+          Genres :
+          <span *ngFor="let genre of movie.genres">
+            {{genre}}
+          </span>
         </div>
         <div *ngIf="movie.releaseDate">
           <i class="calendar icon"></i> {{movie.releaseDate}}
@@ -36,9 +39,20 @@
       </div>
     </div>
   </div>
-  <div class="ui centered row">
-    <div class="column">
-      <app-actor-result [actors]="movie.actors"></app-actor-result>
+  <div class="ui centered row" *ngIf="movie.director">
+      <div class="twelve wide column">
+        <div class="ui secondary segment">
+          <h2 class="ui centered header"><i class="announcement icon"></i> Directors</h2>
+        </div>
+        <app-actor-result [actors]="movie.director"></app-actor-result>
+    </div>
+  </div>
+  <div class="ui centered row" *ngIf="movie.actors.length>0">
+      <div class="twelve wide column" >
+        <div class="ui secondary segment">
+          <h2 class="ui centered header"><i class="user icon"></i> Casting</h2>
+        </div>
+        <app-actor-result [actors]="movie.actors"></app-actor-result>
     </div>
   </div>
 </div>
