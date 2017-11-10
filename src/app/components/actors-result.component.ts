@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Artist} from '../entities/movie-api/artist';
-import {ACTORS} from '../app.constants';
+import {firstNElement} from '../app.constants';
+import {Work} from '../entities/movie-api/work';
 
 @Component({
   selector: 'app-actor-result',
@@ -9,4 +10,7 @@ import {ACTORS} from '../app.constants';
 })
 export class ActorsResultsComponent {
   @Input() actors: Array<Artist>;
+  getMovies(movies: Array<Work>): Array<Work> {
+    return firstNElement(movies, 3);
+  }
 }

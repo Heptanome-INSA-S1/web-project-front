@@ -1,18 +1,18 @@
 <div class="ui secondary segment">
   <div class="ui cards">
     <div class="card" *ngFor="let movie of movies" href="#">
-      <div class="content">
+      <div class="left aligned content">
         <div class="header" *ngIf="movie.title">{{movie.title}}</div>
         <div class="header" *ngIf="!movie.title">Missing title.</div>
 
         <div class="description" *ngIf="movie.plot">
-          {{movie.plot}}
+          {{movie.plot.substring(0,200) + '...'}}
         </div>
         <div class="description" *ngIf="!movie.plot">
           No plot available for this movie.
         </div>
         <div class="ui middle aligned animated list" *ngIf="movie.actors.length>0">
-          <div class="item" *ngFor="let actor of firstThreeElement(movie.actors)">
+          <div class="item" *ngFor="let actor of getActors(movie.actors)">
             <i class="user icon"></i>
             <div class="content">
               <div class="header">{{actor.name}}</div>
@@ -23,7 +23,7 @@
       <div class="extra content" *ngIf="movie.runtime || movie.releaseDate">
         <span class="left floated money" *ngIf="movie.runtime">
           <i class="hourglass end icon"></i>
-          {{movie.runtime}} min
+          {{secondsToHms(movie.runtime)}}
         </span>
         <span class="left floated money" *ngIf="!movie.runtime">
           <i class="hourglass end icon"></i>
