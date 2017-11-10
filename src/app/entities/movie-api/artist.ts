@@ -4,7 +4,7 @@ import {URI} from './uri';
 
 export class Artist extends Person {
   constructor(
-    uri?: URI,
+    uri?: Array<URI>,
     name?: string,
     firstName?: string,
     birthDate?: string,
