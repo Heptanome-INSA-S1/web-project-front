@@ -3,6 +3,7 @@
     <div class="ui text loader">Loading</div>
   </div>
 </div>
-<p *ngIf="charged">
+<div class="ui segment" *ngIf="charged">
+  <h1 class="ui center header">{{movie.title}}</h1>
   {{movie | json}}
-</p>
+</div>
