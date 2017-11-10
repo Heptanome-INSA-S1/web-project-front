@@ -1,5 +1,7 @@
 <app-alert></app-alert>
-
-<p>
-  {{movie}}
+<div class="ui segment">
+  <sui-progress class="indicating" [value]="changingValue">Charging</sui-progress>
+</div>
+<p *ngIf="charged">
+  {{movie | json}}
 </p>
