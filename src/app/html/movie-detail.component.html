@@ -3,7 +3,42 @@
     <div class="ui text loader">Loading</div>
   </div>
 </div>
-<div class="ui segment" *ngIf="charged">
-  <h1 class="ui center header">{{movie.title}}</h1>
-  {{movie | json}}
+<div class="ui very padded grid" *ngIf="charged" style="padding-top: 5%">
+  <div class="ui two column centered floated row">
+    <div class="four wide column">
+      <img class="ui rounded image" src="{{movie.poster}}">
+    </div>
+    <div class="eight wide column">
+      <div class="ui segment">
+        <h1 class="ui header">{{movie.title}}</h1>
+        Genres :
+        <div *ngFor="let genre of movie.genres">
+          {{genre}}
+        </div>
+        <div *ngIf="movie.releaseDate">
+          <i class="calendar icon"></i> {{movie.releaseDate}}
+        </div>
+        <div *ngIf="movie.runtime">
+          <i class="hourglass half icon"></i>{{secondsToHms(movie.runtime)}}
+        </div>
+        <div *ngIf="movie.gross">
+          <i class="ticket icon"></i>${{movie.gross}}
+        </div>
+        <div *ngIf="movie.budget">
+          <i class="credit card alternative icon"></i>${{movie.budget}}
+        </div>
+        <br>
+        <div *ngIf="movie.plot">
+          <p>
+            {{movie.plot}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui centered row">
+    <div class="column">
+      <app-actor-result [actors]="movie.actors"></app-actor-result>
+    </div>
+  </div>
 </div>
