@@ -21,10 +21,10 @@ export class SearchPageComponent {
   query: string;
   filters: Array<Filter>;
   options: Array<Filter> = FILTER_OPTIONS;
-  searchLinks: Array<SearchLink>;
-  movies: Array<Work>;
-  actors: Array<Artist>;
-  shows: Array<Show>;
+  searchLinks: Array<SearchLink> = [];
+  movies: Array<Work> = [];
+  actors: Array<Artist> = [];
+  shows: Array<Show> = [];
   searching = [false, false, false, false];
   constructor(
     private apiService: APIService,
@@ -34,10 +34,10 @@ export class SearchPageComponent {
     private showService: TvShowService
   ) {}
   resetResult() {
-    this.movies = null;
-    this.actors = null;
-    this.shows = null;
-    this.searchLinks = null;
+    this.movies = [];
+    this.actors = [];
+    this.shows = [];
+    this.searchLinks = [];
   }
   search() {
     this.resetResult();
@@ -69,7 +69,6 @@ export class SearchPageComponent {
       this.searching[2] = true;
       this.actorService.getActors(this.query, true)
         .then( res => {
-          console.log(res);
           this.actors = res;
           if (this.toSearch.movies) {
             for (const actor of this.actors){

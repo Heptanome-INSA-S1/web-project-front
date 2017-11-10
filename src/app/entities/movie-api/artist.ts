@@ -4,6 +4,7 @@ import {URI} from './uri';
 
 export class Artist extends Person {
   constructor(
+    uri?: URI,
     name?: string,
     firstName?: string,
     birthDate?: string,
@@ -14,6 +15,6 @@ export class Artist extends Person {
     public filmography?: Array<Work>,
     public bestMovies?: Array<Work>
   ) {
-    super(name, firstName, birthDate, deathDate, biography, children, partner);
+    super(uri, name, firstName, birthDate, deathDate, biography, children, partner);
   }
 }
