@@ -19,7 +19,8 @@ export const API_SERVER: any = {
 export const FILTER_OPTIONS: Array<Filter> = [
   {name: 'Acteurs', value: 'actors', icon: 'user'},
   {name: 'Films', value: 'movies', icon: 'film'},
-  {name: 'TV-Show', value: 'shows', icon: 'tv'}
+  {name: 'Google search', value: 'google', icon: 'google'}
+  /*{name: 'TV-Show', value: 'shows', icon: 'tv'}*/
 ];
 
 export const ACTOR_EXEMPLE: Artist = new Artist('thomas', 'thomas', '28/05/1995', '', 'genius', [], [], [], []);

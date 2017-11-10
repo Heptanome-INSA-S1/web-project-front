@@ -33,7 +33,14 @@ export class SearchPageComponent {
     private actorService: ActorService,
     private showService: TvShowService
   ) {}
+  resetResult() {
+    this.movies = null;
+    this.actors = null;
+    this.shows = null;
+    this.searchLinks = null;
+  }
   search() {
+    this.resetResult();
     if (this.toSearch.google) {
       this.searching[0] = true;
       this.apiService.getSearchLinks(this.query)
@@ -62,7 +69,17 @@ export class SearchPageComponent {
       this.searching[2] = true;
       this.actorService.getActors(this.query, true)
         .then( res => {
+          console.log(res);
           this.actors = res;
+          if (this.toSearch.movies) {
+            for (const actor of this.actors){
+              if (actor.filmography) {
+                this.movies.push(actor.filmography);
+              }else if (actor.bestMovies) {
+                this.movies.push(actor.bestMovies);
+              }
+            }
+          }
           this.searching[2] = false;
         })
         .catch( res => {
@@ -70,7 +87,7 @@ export class SearchPageComponent {
           this.alertService.warn('Error encountered :', 'Error encountered with the actor API', 'warning')
         });
     }
-    if (this.toSearch.shows) {
+    /*if (this.toSearch.shows) {
       this.searching[3] = true;
       this.showService.getTvShows(this.query, true)
         .then( res => {
@@ -81,11 +98,11 @@ export class SearchPageComponent {
           this.searching[3] = false;
           this.alertService.warn('Error encountered :', 'Error encountered with the tv-show API', 'warning')
         });
-    }
+    }*/
   }
   get toSearch(): any {
     return {
-      google: <boolean>(!this.filters),
+      google: <boolean>(!this.filters || !this.filters || (!isUndefined(this.filters.find(item => item.value === 'google')))),
       actors: <boolean>(!this.filters || (!isUndefined(this.filters.find(item => item.value === 'actors')))),
       movies: <boolean>(!this.filters || (!isUndefined(this.filters.find(item => item.value === 'movies')))),
       shows: <boolean>(!this.filters || (!isUndefined(this.filters.find(item => item.value === 'shows'))))
