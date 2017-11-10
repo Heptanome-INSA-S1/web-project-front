@@ -6,6 +6,17 @@ import {Artist} from '../entities/movie-api/artist';
 @Injectable()
 export class ActorService {
 
+  public static parseUuidActor(actor: Artist): string {
+    let resource = '';
+    for (let i = 0 ; i < actor.uri.length; i++) {
+      if ( i === 1 ) {
+        resource += '::';
+      }
+      resource += actor.uri[i].anchor + '@' + actor.uri[i].database;
+    }
+    return resource;
+  }
+
   constructor( private http: Http) {}
 
   private handleError(error: any): Promise<any> {

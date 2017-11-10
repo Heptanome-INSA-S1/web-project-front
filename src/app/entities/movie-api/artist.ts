@@ -1,5 +1,6 @@
 import {Person} from './person';
 import {Work} from './work';
+import {URI} from './uri';
 
 export class Artist extends Person {
   constructor(
