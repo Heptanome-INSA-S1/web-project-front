@@ -1,6 +1,6 @@
 <div class="ui secondary segment">
   <div class="ui cards">
-    <div class="card" *ngFor="let movie of movies" [routerLink]="['movie', link(movie)]" >
+    <a class="card" *ngFor="let movie of movies" href="/movie/{{link(movie)}}" >
       <div class="left aligned content">
         <div class="header" *ngIf="movie.title">{{movie.title}}</div>
         <div class="header" *ngIf="!movie.title">Missing title.</div>
@@ -38,6 +38,6 @@
           N/C
         </span>
       </div>
-    </div>
+    </a>
   </div>
 </div>
