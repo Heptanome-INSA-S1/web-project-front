@@ -9,8 +9,8 @@ import {ActorDetailComponent} from './components/actor-detail.component';
 const appRoutes: Routes = [
   {path: '', redirectTo: '/search-page', pathMatch: 'full'},
   {path: 'search-page', component: SearchPageComponent},
-  {path: 'movie/:id', component: MovieDetailComponent},
-  {path: 'actor/:id', component: ActorDetailComponent}
+  {path: 'movie', component: MovieDetailComponent},
+  {path: 'actor', component: ActorDetailComponent}
 ];
 
 

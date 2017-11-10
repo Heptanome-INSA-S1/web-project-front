@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActorService} from '../services/actor.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService} from '../services/alert.service';
 import {Artist} from '../entities/movie-api/artist';
 import {Person} from '../entities/movie-api/person';
@@ -15,14 +15,22 @@ import {Person} from '../entities/movie-api/person';
 export class ActorDetailComponent implements OnInit {
   private actor: Artist;
   private charged: boolean;
+  private uuid: string;
 
   constructor(
     private actorService: ActorService,
     private alertService: AlertService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    this.route
+      .queryParams
+      .subscribe(params => {
+        // Defaults to 0 if no query param provided.
+        this.uuid = params['uuid'] || '';
+      });
       this.getActor();
   }
 
@@ -32,8 +40,7 @@ export class ActorDetailComponent implements OnInit {
 
   getActor(): void {
     this.charged = false;
-    const id = this.route.snapshot.paramMap.get('id');
-    this.actorService.getActorByResource(id)
+    this.actorService.getActorByResource(this.uuid)
       .then(res => {
         this.actor = res;
         this.charged = true;
