@@ -23,7 +23,7 @@
       <div class="extra content" *ngIf="movie.runtime || movie.releaseDate">
         <span class="left floated money" *ngIf="movie.runtime">
           <i class="hourglass end icon"></i>
-          {{secondsToHms(movie.runtime)}}
+          {{toHour(movie.runtime)}}
         </span>
         <span class="left floated money" *ngIf="!movie.runtime">
           <i class="hourglass end icon"></i>
