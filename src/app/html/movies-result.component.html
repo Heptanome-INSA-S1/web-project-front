@@ -16,7 +16,7 @@
             <div class="item" *ngFor="let actor of getActors(movie.actors)">
               <i class="user icon"></i>
               <div class="content">
-                <div class="header">{{actor.name}}</div>
+                <div class="header"><span *ngIf="actor.firstName">{{actor.firstName}} </span><span *ngIf="actor.name">{{actor.name}}</span></div>
               </div>
             </div>
           </div>

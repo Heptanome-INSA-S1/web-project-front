@@ -1,6 +1,7 @@
-<app-alert></app-alert>
-<div class="ui segment">
-  <sui-progress class="indicating" [value]="changingValue">Charging</sui-progress>
+<div class="ui segment" *ngIf="!charged" style="height:100%">
+  <div class="ui active dimmer">
+    <div class="ui text loader">Loading</div>
+  </div>
 </div>
 <p *ngIf="charged">
   {{movie | json}}

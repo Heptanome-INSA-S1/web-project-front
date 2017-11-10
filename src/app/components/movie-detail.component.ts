@@ -50,7 +50,7 @@ getMovie(): void {
     .catch(res => {
       this.changingValue = 100;
       this.charged = true;
-      this.alertService.warn('Error encountered :', 'Error encountered with the tv-show API', 'warning');
+      this.alertService.warn('Error encountered :', 'Error encountered with the movie API', 'warning');
     });
   }
 
