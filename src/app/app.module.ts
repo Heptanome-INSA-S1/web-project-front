@@ -17,6 +17,7 @@ import {ActorsResultsComponent} from './components/actors-result.component';
 import { MovieDetailComponent } from './components/movie-detail.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ShowsResultsComponent} from './components/shows-results.component';
+import {ActorDetailComponent} from './components/actor-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {ShowsResultsComponent} from './components/shows-results.component';
     ActorsResultsComponent,
     AlertComponent,
     MovieDetailComponent,
-    ShowsResultsComponent
+    ShowsResultsComponent,
+    ActorDetailComponent
   ],
   imports: [
     BrowserModule,
