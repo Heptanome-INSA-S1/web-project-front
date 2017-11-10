@@ -23,8 +23,15 @@ export class MovieService {
       .catch(this.handleError);
   }
 
-  public getMovieByResource(resource: string): Promise<Work> {
-    return this.http.get(API_SERVER.movies + '/' + resource)
+  public getMovieByResource(movie: Work): Promise<Work> {
+    let resource = '';
+    for (let i = 0 ; i < movie.uri.length; i++) {
+      if ( i === 1 ) {
+        resource += '::';
+      }
+      resource += movie.uri[i].anchor + '@' + movie.uri[i].database;
+    }
+    return this.http.get(API_SERVER.movies + '/unique?uuid=' + resource)
       .toPromise()
       .then(res => {
         return res.json() as Work;
