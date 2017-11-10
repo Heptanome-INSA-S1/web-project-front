@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Work} from '../entities/movie-api/work';
 import {secondsToHms, firstNElement} from '../app.constants';
 import {Artist} from '../entities/movie-api/artist';
-import {MovieService} from "../services/movie.service";
+import {MovieService} from '../services/movie.service';
 
 @Component({
   selector: 'app-movie-result',
