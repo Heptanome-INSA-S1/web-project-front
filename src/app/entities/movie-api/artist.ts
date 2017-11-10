@@ -12,7 +12,7 @@ export class Artist extends Person {
     deathDate?: string,
     biography?: string,
     children?: Array<Person>,
-    partner?: Array<Person>,
+    partner?: Person,
     public filmography?: Array<Work>,
     public bestMovies?: Array<Work>
   ) {

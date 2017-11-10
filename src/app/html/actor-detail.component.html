@@ -1,37 +1,102 @@
+<div class="ui segment" *ngIf="!charged" style="height:100%">
+  <div class="ui active dimmer">
+    <div class="ui text loader">Loading</div>
+  </div>
+</div>
 <div class="ui left aligned segment" *ngIf="actor">
-  <div class="ui grid">
+  <div class="ui centered grid">
     <div class="row">
-      <h1 class="ui header">
-        <img src="{{actor.photo}}" class="ui circular image" *ngIf="actor.photo">
-        <div class="content">
-          {{actor.firstName}} {{actor.name}}
-          <div class="sub header" *ngIf="actor.birthDate">{{actor.birthDate.split('-').reverse().join('/')}}<span *ngIf="actor.deathDate"> - {{actor.deathDate.split('-').reverse().join('/')}}</span></div>
-        </div>
-      </h1>
-    </div>
-    <div class="row">
-      <sui-accordion class="styled fluid">
-        <sui-accordion-panel [isOpen]="true">
-          <div title>
-            <h2 class="ui left aligned header"><i class="id card icon"></i> Biography</h2>
+      <div class="ten wide column">
+        <div class="ui grid">
+          <div class="row">
+            <h1 class="ui header">
+              <img src="{{actor.photo}}" class="ui circular image" *ngIf="actor.photo">
+              <div class="content">
+                {{actor.firstName}} {{actor.name}}
+                <div class="sub header" *ngIf="actor.birthDate">
+                  {{actor.birthDate.split('-').reverse().join('/')}}<span *ngIf="actor.deathDate"> - {{actor.deathDate.split('-').reverse().join('/')}}</span><br/>
+                  <div *ngIf="actor.partner">
+                    <i class="heart icon"></i>{{actor.partner.firstName}} {{actor.partner.name}}
+                  </div>
+                </div>
+              </div>
+            </h1>
           </div>
-          <div content>
-            <p class="left aligned">{{actor.biography}}</p>
-          </div>
-        </sui-accordion-panel>
-      </sui-accordion>
-      <sui-accordion class="styled fluid">
-        <sui-accordion-panel [isOpen]="false">
-          <div title>
-            <h2 class="ui left aligned header"><i class="id card icon"></i> Life</h2>
-          </div>
-          <div content>
-            <div class="column">
+          <div class="row">
+            <sui-accordion class="styled fluid">
+              <sui-accordion-panel [isOpen]="true">
+                <div title>
+                  <h2 class="ui left aligned header"><i class="id card icon"></i> Biography</h2>
+                </div>
+                <div content>
+                  <p class="left aligned">{{actor.biography}}</p>
+                </div>
+              </sui-accordion-panel>
+            </sui-accordion>
+            <sui-accordion class="styled fluid">
+              <sui-accordion-panel [isOpen]="false">
+                <div title>
+                  <h2 class="ui left aligned header"><i class="id card icon"></i> Children</h2>
+                </div>
+                <div content>
+                  <div class="column">
+                    <div class="ui list" *ngIf="actor.children">
+                      <div class="item" *ngFor="let child of actor.children">
+                        <i class="user icon"></i>
+                        <div class="content">
+                          <a class="header">{{child.firstName}} {{child.name}}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
 
-            </div>
+                </div>
+              </sui-accordion-panel>
+            </sui-accordion>
+            <sui-accordion class="styled fluid">
+              <sui-accordion-panel [isOpen]="false">
+                <div title>
+                  <h2 class="ui left aligned header"><i class="film icon"></i> Filmography</h2>
+                </div>
+                <div content>
+                  <div class="ui cards">
+                      <a class="ui card" *ngFor="let movie of actor.filmography" href="/movie?uuid={{link(movie)}}">
+                        <div class="left aligned content">
+                          <div class="header" *ngIf="movie.title">{{movie.title}}</div>
+                          <div class="header" *ngIf="!movie.title">Missing title.</div>
+                          <div class="description" *ngIf="movie.plot">
+                            {{movie.plot.substring(0,200) + '...'}}
+                          </div>
+                          <div class="description" *ngIf="!movie.plot">
+                            No plot available for this movie.
+                          </div>
+                        </div>
+                        <div class="extra content" *ngIf="movie.runtime || movie.releaseDate">
+                          <span *ngIf="movie.runtime">
+                            <i class="hourglass end icon"></i>
+                            {{toHour(movie.runtime)}}
+                          </span>
+                          <span *ngIf="!movie.runtime">
+                            <i class="hourglass end icon"></i>
+                             N/C
+                          </span>
+                          <span *ngIf="movie.releaseDate">
+                            {{movie.releaseDate}}
+                          </span>
+                          <span class="right floated" *ngIf="!movie.releaseDate">
+                            N/C
+                          </span>
+                        </div>
+                      </a>
+                  </div>
+                </div>
+              </sui-accordion-panel>
+            </sui-accordion>
           </div>
-        </sui-accordion-panel>
-      </sui-accordion>
+        </div>
+      </div>
     </div>
   </div>
 </div>

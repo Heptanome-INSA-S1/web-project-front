@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService} from '../services/alert.service';
 import {Artist} from '../entities/movie-api/artist';
 import {Person} from '../entities/movie-api/person';
+import {secondsToHms} from '../app.constants';
 
 @Component({
   selector: 'app-actor-detail',
@@ -49,5 +50,9 @@ export class ActorDetailComponent implements OnInit {
         this.charged = true;
         this.alertService.warn('Error encountered', 'Error encontered with the actor api', 'warning');
       });
+  }
+
+  toHour(sec: number): string {
+    return secondsToHms(sec);
   }
 }
