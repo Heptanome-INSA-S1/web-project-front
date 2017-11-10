@@ -1,5 +1,5 @@
 export class URI {
-  public accesor: string;
+  public anchor: string;
   public database: string;
   public link: string;
 }

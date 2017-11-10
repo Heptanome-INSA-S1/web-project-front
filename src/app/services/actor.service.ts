@@ -2,9 +2,21 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {API_SERVER} from '../app.constants';
 import {Artist} from '../entities/movie-api/artist';
+import {Person} from "../entities/movie-api/person";
 
 @Injectable()
 export class ActorService {
+
+  public static parseUuidActor(actor: Person): string {
+    let resource = '';
+    for (let i = 0 ; i < actor.uri.length; i++) {
+      if ( i === 1 ) {
+        resource += '::';
+      }
+      resource += actor.uri[i].anchor + '@' + actor.uri[i].database;
+    }
+    return resource;
+  }
 
   constructor( private http: Http) {}
 
