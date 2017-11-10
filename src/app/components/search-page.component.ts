@@ -57,7 +57,9 @@ export class SearchPageComponent {
       this.searching[1] = true;
       this.movieService.getMovies(this.query, true)
         .then(res => {
-          this.movies = res;
+          for (const movie of res) {
+            this.movies.push(movie);
+          }
           this.searching[1] = false;
         })
         .catch(res => {
@@ -69,13 +71,16 @@ export class SearchPageComponent {
       this.searching[2] = true;
       this.actorService.getActors(this.query, true)
         .then( res => {
+          for (const actor of res) {
+            this.actors.push(actor);
+          }
           this.actors = res;
           if (this.toSearch.movies) {
             for (const actor of this.actors){
               if (actor.filmography) {
-                this.movies.push(actor.filmography);
-              }else if (actor.bestMovies) {
-                this.movies.push(actor.bestMovies);
+                for (const movie of actor.filmography) {
+                  this.movies.push(movie);
+                }
               }
             }
           }
