@@ -29,14 +29,12 @@
                   <h2 class="ui left aligned header"><i class="id card icon"></i> Biography</h2>
                 </div>
                 <div content>
-                  <p class="left aligned">{{actor.biography}}</p>
+                  <p class="left aligned" style="margin-left: 50px;margin-right: 50px">{{actor.biography}}</p>
                 </div>
               </sui-accordion-panel>
-            </sui-accordion>
-            <sui-accordion class="styled fluid">
               <sui-accordion-panel [isOpen]="false">
                 <div title>
-                  <h2 class="ui left aligned header"><i class="id card icon"></i> Children</h2>
+                  <h2 class="ui left aligned header"><i class="child icon"></i> Children</h2>
                 </div>
                 <div content>
                   <div class="column">
@@ -54,42 +52,40 @@
 
                 </div>
               </sui-accordion-panel>
-            </sui-accordion>
-            <sui-accordion class="styled fluid">
               <sui-accordion-panel [isOpen]="false">
                 <div title>
                   <h2 class="ui left aligned header"><i class="film icon"></i> Filmography</h2>
                 </div>
                 <div content>
-                  <div class="ui cards">
-                      <a class="ui card" *ngFor="let movie of actor.filmography" href="/movie?uuid={{link(movie)}}">
-                        <div class="left aligned content">
-                          <div class="header" *ngIf="movie.title">{{movie.title}}</div>
-                          <div class="header" *ngIf="!movie.title">Missing title.</div>
-                          <div class="description" *ngIf="movie.plot">
-                            {{movie.plot.substring(0,200) + '...'}}
-                          </div>
-                          <div class="description" *ngIf="!movie.plot">
-                            No plot available for this movie.
-                          </div>
+                  <div class="ui centered cards">
+                    <a class="ui card" *ngFor="let movie of actor.filmography" href="/movie?uuid={{link(movie)}}">
+                      <div class="left aligned content">
+                        <div class="header" *ngIf="movie.title">{{movie.title}}</div>
+                        <div class="header" *ngIf="!movie.title">Missing title.</div>
+                        <div class="description" *ngIf="movie.plot">
+                          {{movie.plot.substring(0,200) + '...'}}
                         </div>
-                        <div class="extra content" *ngIf="movie.runtime || movie.releaseDate">
+                        <div class="description" *ngIf="!movie.plot">
+                          No plot available for this movie.
+                        </div>
+                      </div>
+                      <div class="extra content" *ngIf="movie.runtime || movie.releaseDate">
                           <span *ngIf="movie.runtime">
                             <i class="hourglass end icon"></i>
                             {{toHour(movie.runtime)}}
                           </span>
-                          <span *ngIf="!movie.runtime">
+                        <span *ngIf="!movie.runtime">
                             <i class="hourglass end icon"></i>
                              N/C
                           </span>
-                          <span *ngIf="movie.releaseDate">
+                        <span *ngIf="movie.releaseDate">
                             {{movie.releaseDate}}
                           </span>
-                          <span class="right floated" *ngIf="!movie.releaseDate">
+                        <span class="right floated" *ngIf="!movie.releaseDate">
                             N/C
                           </span>
-                        </div>
-                      </a>
+                      </div>
+                    </a>
                   </div>
                 </div>
               </sui-accordion-panel>
