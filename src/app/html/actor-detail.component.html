@@ -23,25 +23,24 @@
     </div>
   </div>
   <div class="field">
-  <label>Children</label>
-  <div class="ui list">
-    <div class="item" *ngFor="let child of children">
-      <i class="user icon"></i>
-      <div class="content">
-        <a class="header" routerLink="actor/:{{link(child)}}">{{child.firstName}}&nbsp;{{child.name}}</a>
-      </div>
-    </div>
-  </div>
-  <div class="field">
-    <label>Filmography</label>
-    <div class="ui bulleted list">
-      <div class="item" *ngFor="let movie of filmography">
+    <label>Children</label>
+    <div class="ui list">
+      <div class="item" *ngFor="let child of children">
+        <i class="user icon"></i>
         <div class="content">
-          <a class="header" >{{movie.title}}</a>
+          <a class="header" routerLink="actor/:{{link(child)}}">{{child.firstName}}&nbsp;{{child.name}}</a>
         </div>
       </div>
     </div>
-  </div>
-</div>
+    <div class="field">
+      <label>Filmography</label>
+      <div class="ui bulleted list">
+        <div class="item" *ngFor="let movie of filmography">
+          <div class="content">
+            <a class="header" >{{movie.title}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </form>

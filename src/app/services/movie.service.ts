@@ -8,11 +8,13 @@ export class MovieService {
 
   public static parseUuidActor(movie: Work): string {
     let resource = '';
-    for (let i = 0 ; i < movie.uri.length; i++) {
-      if ( i === 1 ) {
-        resource += '::';
+    if (movie.uri) {
+      for (let i = 0 ; i < movie.uri.length; i++) {
+        if ( i === 1 ) {
+          resource += '::';
+        }
+        resource += movie.uri[i].anchor + '@' + movie.uri[i].database;
       }
-      resource += movie.uri[i].anchor + '@' + movie.uri[i].database;
     }
     return resource;
   }

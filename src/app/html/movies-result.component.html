@@ -1,6 +1,6 @@
 <div class="ui secondary segment">
   <div class="ui cards">
-    <div class="card" *ngFor="let movie of movies" [routerLink]="['movie', linkMovie(movie)]" >
+    <div class="card" *ngFor="let movie of movies" [routerLink]="['movie', link(movie)]" >
       <div class="left aligned content">
         <div class="header" *ngIf="movie.title">{{movie.title}}</div>
         <div class="header" *ngIf="!movie.title">Missing title.</div>
@@ -11,11 +11,13 @@
         <div class="description" *ngIf="!movie.plot">
           No plot available for this movie.
         </div>
-        <div class="ui middle aligned animated list" *ngIf="movie.actors.length>0">
-          <div class="item" *ngFor="let actor of getActors(movie.actors)">
-            <i class="user icon"></i>
-            <div class="content">
-              <div class="header">{{actor.name}}</div>
+        <div *ngIf="movie.actors">
+          <div class="ui middle aligned animated list" *ngIf="movie.actors.length>0">
+            <div class="item" *ngFor="let actor of getActors(movie.actors)">
+              <i class="user icon"></i>
+              <div class="content">
+                <div class="header">{{actor.name}}</div>
+              </div>
             </div>
           </div>
         </div>

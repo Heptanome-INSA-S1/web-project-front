@@ -4,7 +4,6 @@ import {ActivatedRoute} from '@angular/router';
 import {AlertService} from '../services/alert.service';
 import {Artist} from '../entities/movie-api/artist';
 import {Person} from '../entities/movie-api/person';
-import {ACTOR_EXEMPLE} from '../app.constants';
 
 @Component({
   selector: 'app-actor-detail',
@@ -14,17 +13,17 @@ import {ACTOR_EXEMPLE} from '../app.constants';
 
 
 export class ActorDetailComponent implements OnInit {
-  private actor: Artist = ACTOR_EXEMPLE;
+  private actor: Artist;
   private charged: boolean;
 
   constructor(
     private actorService: ActorService,
     private alertService: AlertService,
     private route: ActivatedRoute
-  ){}
+  ) {}
 
   ngOnInit() {
-      //this.getActor();
+      this.getActor();
   }
 
   link(person: Person): string {
