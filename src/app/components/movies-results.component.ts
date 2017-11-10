@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Work} from '../entities/movie-api/work';
-import {secondsToHms, firstNElement} from '../app.constants';
+import {secondsToHms, firstNElement, linkMovie} from '../app.constants';
 import {Artist} from '../entities/movie-api/artist';
 
 @Component({

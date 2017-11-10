@@ -1,4 +1,8 @@
 import {Filter} from './entities/filter';
+import {Person} from './entities/movie-api/person';
+import {ActorService} from './services/actor.service';
+import {Work} from './entities/movie-api/work';
+import {MovieService} from './services/movie.service';
 
 export const API_SERVER: any = {
   url: 'http://localhost:8080/',
@@ -17,6 +21,14 @@ export const FILTER_OPTIONS: Array<Filter> = [
   {name: 'Google search', value: 'google', icon: 'google'}
   /*{name: 'TV-Show', value: 'shows', icon: 'tv'}*/
 ];
+
+export function linkPerson(person: Person): string {
+  return ActorService.parseUuidActor(person);
+}
+
+export function linkMovie(work: Work): string {
+  return MovieService.parseUuidActor(work);
+}
 
 export function secondsToHms(d: number): string {
   const h = Math.floor(d / 3600);
