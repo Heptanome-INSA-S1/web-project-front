@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<h1>{{actor.name}}&nbsp;{{actor.firstName}}</h1>
+<form class="ui form">
+  <div class="field">
+    <label>Information</label>
+    <textarea readonly>Born in : {{actor.birthDate}} ({{actor.birthPlace}})&nbsp;Died in : {{actor.deathDate}}</textarea>
+  </div>
+  <div class="field">
+    <label>Biography</label>
+    <textarea readonly>{{actor.biography}}</textarea>
+  </div>
+  <div class="field">
+    <label>Last Name</label>
+  </div>
+  <div class="field">
+    <label>Partner(s)</label>
+    <div class="ui bulleted list">
+      <div class="item" *ngFor="let p of partner">
+        <div class="content">
+          <i class="user icon"></i>
+          <a class="header" routerLink="actor/:{{link(p)}}">{{p.firstName}}&nbsp;{{p.name}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+  <label>Children</label>
+  <div class="ui list">
+    <div class="item" *ngFor="let child of children">
+      <i class="user icon"></i>
+      <div class="content">
+        <a class="header" routerLink="actor/:{{link(child)}}">{{child.firstName}}&nbsp;{{child.name}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Filmography</label>
+    <div class="ui bulleted list">
+      <div class="item" *ngFor="let movie of filmography">
+        <div class="content">
+          <a class="header" >{{movie.title}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</form>
