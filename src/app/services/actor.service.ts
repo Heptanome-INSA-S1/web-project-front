@@ -36,7 +36,7 @@ export class ActorService {
   }
 
   public getActorByResource(resource: string): Promise<Artist> {
-    return this.http.get(API_SERVER.actors + '/' + resource)
+    return this.http.get(API_SERVER.actors + '/unique?uuid=' + resource)
       .toPromise()
       .then(res => {
         return res.json() as Artist;

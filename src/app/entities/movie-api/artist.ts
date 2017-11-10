@@ -7,6 +7,7 @@ export class Artist extends Person {
     uri?: Array<URI>,
     name?: string,
     firstName?: string,
+    photo?: string,
     birthDate?: string,
     deathDate?: string,
     biography?: string,
@@ -15,6 +16,6 @@ export class Artist extends Person {
     public filmography?: Array<Work>,
     public bestMovies?: Array<Work>
   ) {
-    super(uri, name, firstName, birthDate, deathDate, biography, children, partner);
+    super(uri, name, firstName, photo, birthDate, deathDate, biography, children, partner);
   }
 }

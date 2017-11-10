@@ -5,6 +5,7 @@ export class Person {
     public uri?: Array<URI>,
     public name?: string,
     public firstName?: string,
+    public photo?: string,
     public birthDate?: string,
     public deathDate?: string,
     public biography?: string,
