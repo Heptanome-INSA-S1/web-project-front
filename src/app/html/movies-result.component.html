@@ -25,8 +25,15 @@
           <i class="hourglass end icon"></i>
           {{movie.runtime}} min
         </span>
+        <span class="left floated money" *ngIf="!movie.runtime">
+          <i class="hourglass end icon"></i>
+          N/C
+        </span>
         <span class="right floated ticket" *ngIf="movie.releaseDate">
           {{movie.releaseDate}}
+        </span>
+        <span class="right floated ticket" *ngIf="!movie.releaseDate">
+          N/C
         </span>
       </div>
     </div>
