@@ -3,6 +3,16 @@
 </div>
 <div class="ui centered grid" *ngIf="charged && actor" style="margin-top: 10px;">
   <div class="row">
+    <div class="ui breadcrumb">
+      <a class="section" [routerLink]="['/']">Home</a>
+      <i class="right angle icon divider"></i>
+      <div class="section">Actor</div>
+      <i class="right angle icon divider"></i>
+      <div class="active section" *ngIf="actor.firstName">{{actor.firstName}} {{actor.name}}</div>
+      <div class="active section" *ngIf="!actor.firstName">Actual actor</div>
+    </div>
+  </div>
+  <div class="row">
     <div class="four wide column">
       <div class="ui card">
         <div class="image" *ngIf="actor.photo">
@@ -56,7 +66,7 @@
               </div>
             </div>
           </div>
-          <span *ngIf="!actor.partner && (!actor.children || actor.children.length == 0)">No relations availables.</span>
+          <span *ngIf="!actor.partner && (!actor.children || actor.children.length == 0)">No relations founds.</span>
         </div>
         <div class="ui bottom attached segment" suiTabContent="3">
           <app-movie-result [movies]="actor.filmography" *ngIf="actor.filmography && actor.filmography.length > 0"></app-movie-result>

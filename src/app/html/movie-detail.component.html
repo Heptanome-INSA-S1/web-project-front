@@ -3,6 +3,16 @@
 </div>
 <div class="ui centered grid" *ngIf="charged && movie" style="margin-top: 10px;">
   <div class="row">
+    <div class="ui breadcrumb">
+      <a class="section" [routerLink]="['/']">Home</a>
+      <i class="right angle icon divider"></i>
+      <div class="section">Movie</div>
+      <i class="right angle icon divider"></i>
+      <div class="active section" *ngIf="movie.title">{{movie.title}}</div>
+      <div class="active section" *ngIf="!movie.title">Actual movie</div>
+    </div>
+  </div>
+  <div class="row">
     <div class="four wide column">
       <div class="ui card">
         <div class="image" *ngIf="movie.poster">
