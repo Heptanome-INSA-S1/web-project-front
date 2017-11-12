@@ -15,7 +15,7 @@ import {secondsToHms} from '../app.constants';
 
 export class ActorDetailComponent implements OnInit {
   private actor: Artist;
-  private charged: boolean;
+  private charged = false;
   private uuid: string;
 
   constructor(

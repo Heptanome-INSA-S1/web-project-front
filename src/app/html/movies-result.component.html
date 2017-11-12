@@ -1,6 +1,6 @@
 <div class="ui secondary segment">
   <div class="ui cards">
-    <a class="card" *ngFor="let movie of movies" href="/movie?uuid={{link(movie)}}" >
+    <a class="card" *ngFor="let movie of movies" [routerLink]="['/movie']" [queryParams]="{uuid: link(movie)}" >
       <div class="image" *ngIf="movie.poster">
         <img src="{{movie.poster}}">
       </div>
@@ -15,7 +15,7 @@
           No plot available for this movie.
         </div>
         <div *ngIf="movie.actors">
-          <div class="ui middle aligned animated list" *ngIf="movie.actors.length>0">
+          <div class="ui list" *ngIf="movie.actors.length>0">
             <div class="item" *ngFor="let actor of getActors(movie.actors)">
               <i class="user icon"></i>
               <div class="content">
@@ -35,7 +35,7 @@
           N/C
         </span>
         <span class="right floated ticket" *ngIf="movie.releaseDate">
-          {{movie.releaseDate}}
+          {{movie.releaseDate.split('-').reverse().join('/')}}
         </span>
         <span class="right floated ticket" *ngIf="!movie.releaseDate">
           N/C

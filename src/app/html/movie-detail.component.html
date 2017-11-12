@@ -1,57 +1,82 @@
-<div class="ui segment" *ngIf="!charged" style="height:100%">
-  <div class="ui active dimmer">
-    <div class="ui text loader">Loading</div>
-  </div>
+<div class="ui active dimmer" *ngIf="!charged">
+  <div class="ui text loader">Chargement</div>
 </div>
-<div class="ui very padded grid" *ngIf="charged" style="padding-top: 5%">
-  <div class="ui two column centered floated row">
+<div class="ui centered grid" *ngIf="charged && movie" style="margin-top: 10px;">
+  <div class="row">
     <div class="four wide column">
-      <img class="ui rounded image" src="{{movie.poster}}">
-    </div>
-    <div class="eight wide column">
-      <div class="ui segment">
-        <h1 class="ui header">{{movie.title}}</h1>
-        <div *ngIf="movie.genre">
-          Genres :
-          <span *ngFor="let genre of movie.genres">
-            {{genre}}
-          </span>
+      <div class="ui card">
+        <div class="image" *ngIf="movie.poster">
+          <img [src]="movie.poster">
         </div>
-        <div *ngIf="movie.releaseDate">
-          <i class="calendar icon"></i> {{movie.releaseDate}}
-        </div>
-        <div *ngIf="movie.runtime">
-          <i class="hourglass half icon"></i>{{secondsToHms(movie.runtime)}}
-        </div>
-        <div *ngIf="movie.gross">
-          <i class="ticket icon"></i>${{movie.gross}}
-        </div>
-        <div *ngIf="movie.budget">
-          <i class="credit card alternative icon"></i>${{movie.budget}}
-        </div>
-        <br>
-        <div *ngIf="movie.plot">
-          <p>
-            {{movie.plot}}
-          </p>
+        <div class="left aligned content">
+          <h1 class="header" *ngIf="movie.title">{{movie.title}}</h1>
+          <h1 class="header" *ngIf="!movie.title">Missing title</h1>
+          <div class="description" *ngIf="movie.genres && movie.genres.length > 0">
+            <div class="ui label" *ngFor="let genre of movie.genres">
+              {{genre}}
+            </div>
+          </div>
+          <div class="meta" *ngIf="movie.runtime">
+            <span class="date"><i class="hourglass end icon"></i> {{toHour(movie.runtime)}}</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="ui centered row" *ngIf="movie.director">
-      <div class="twelve wide column">
-        <div class="ui secondary segment">
-          <h2 class="ui centered header"><i class="announcement icon"></i> Directors</h2>
+    <div class="eleven wide column">
+      <sui-tabset>
+        <div class="ui top attached tabular menu">
+          <a class="item" suiTabHeader="1"><i class="film icon"></i> Plot</a>
+          <a class="item" suiTabHeader="2"><i class="info icon"></i> Informations</a>
+          <a class="item" suiTabHeader="3"><i class="users icon"></i> Casting</a>
         </div>
-        <app-actor-result [actors]="movie.director"></app-actor-result>
-    </div>
-  </div>
-  <div class="ui centered row" *ngIf="movie.actors.length>0">
-      <div class="twelve wide column" >
-        <div class="ui secondary segment">
-          <h2 class="ui centered header"><i class="user icon"></i> Casting</h2>
+        <div class="ui bottom attached segment" suiTabContent="1">
+          <span *ngIf="movie.plot">{{movie.plot}}</span>
+          <span *ngIf="!movie.plot">No plot available.</span>
         </div>
-        <app-actor-result [actors]="movie.actors"></app-actor-result>
+        <div class="ui bottom attached segment" suiTabContent="2">
+          <div class="row">
+            <div class="ui four tiny statistics">
+              <div class="statistic">
+                <div class="value">
+                  <i class="dollar icon"></i> <span *ngIf="movie.gross">{{movie.gross}}</span><span *ngIf="!movie.gross">-</span>
+                </div>
+                <div class="label">
+                  Gross
+                </div>
+              </div>
+              <div class="statistic">
+                <div class="value">
+                  <i class="dollar icon"></i> <span *ngIf="movie.budget">{{movie.budget}}</span><span *ngIf="!movie.budget">-</span>
+                </div>
+                <div class="label">
+                  Budjet
+                </div>
+              </div>
+              <div class="statistic">
+                <div class="value">
+                  <i class="hourglass end icon"></i> <span *ngIf="movie.runtime">{{toHour(movie.runtime)}}</span><span *ngIf="!movie.runtime">-</span>
+                </div>
+                <div class="label">
+                  Runtime
+                </div>
+              </div>
+              <div class="statistic">
+                <div class="value">
+                  <i class="calendar icon"></i> <span *ngIf="movie.releaseDate">{{movie.releaseDate.split('-').reverse().join('/')}}</span><span *ngIf="!movie.releaseDate">-</span>
+                </div>
+                <div class="label">
+                  Release date
+                </div>
+              </div>
+            </div>
+          </div>
+          <span *ngIf="!movie.releaseDate && !movie.runtime && !movie.gross && !movie.budget">No informations availables.</span>
+        </div>
+        <div class="ui bottom attached segment" suiTabContent="3">
+          <app-actor-result [actors]="movie.actors" *ngIf="movie.actors && movie.actors.length > 0"></app-actor-result>
+          <span *ngIf="!movie.actors || movie.actors.length == 0">No actor found.</span>
+        </div>
+      </sui-tabset>
     </div>
   </div>
 </div>
